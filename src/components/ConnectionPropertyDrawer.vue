@@ -125,6 +125,7 @@ export default {
     icons: {
         iconfont: "mdi"
     },
+    // props here
     data() {
         return {
             connectionName: "NewConnection",
@@ -132,11 +133,11 @@ export default {
             spec: this.computedSpec("Connection"),
             chip1: true,
             chip2: true,
-            activated: false,
+            activated: true,
             isOpen: false,
             isEditing: false,
             connection_suggestions: { state1: "Left Click to Choose a Point", state2: "Right Click to End Connection" },
-            current_connection_suggestion: this.connection_suggestions.state1,
+            current_connection_suggestion: "Left Click to Choose a Point",
             connectionProfiles: [],
             selectedProfile: "",
             previews: { CHANNEL: "@/assets/technology/CHANNEL.png" }
@@ -148,8 +149,10 @@ export default {
         },
         sources: function() {
             if (Registry.viewManager !== undefined || Registry.viewManager !== null) {
-                if (Registry.viewManager.tools.Connection.source !== null) {
-                    return [Registry.viewManager.tools.Connection.source];
+                // if (Registry.viewManager.tools.Connection.source !== null) {
+                    if (Registry){
+                    // return [Registry.viewManager.tools.Connection.source];
+                    return [];
                 } else {
                     return [];
                 }
@@ -159,7 +162,8 @@ export default {
         },
         sinks: function() {
             if (Registry.viewManager !== undefined || Registry.viewManager !== null) {
-                return Registry.viewManager.tools.Connection.sinks;
+                // return Registry.viewManager.tools.Connection.sinks;
+                return [];
             } else {
                 return [];
             }
@@ -185,7 +189,8 @@ export default {
             let definition = ComponentAPI.getDefinition(threeduftype);
             let spec = [];
             for (let key in definition.heritable) {
-                console.log(definition.units[key]);
+                console.log("unit: ", definition.units[key]);
+                console.log("connection prop");
                 // const unittext = definition.units[key] !== "" ? he.htmlDecode(definition.units[key]) : "";
                 let item = {
                     mint: key,
@@ -202,6 +207,7 @@ export default {
         },
         showProperties() {
             this.activated = !this.activated;
+            // this.spec = this,computedSpec()
             let attachPoint = document.querySelector("[data-app]");
 
             if (!attachPoint) {
@@ -231,7 +237,8 @@ export default {
             this.isEditing = true;
         },
         startConnection() {
-            Registry.viewManager.activateTool("Connection", "Connection");
+            console.log("connection started");
+            this.activeTool = Registry.viewManager.activateTool("Connection", "Connection");
             this.current_connection_suggestion = this.connection_suggestions["state2"];
         },
         endConnection: function() {

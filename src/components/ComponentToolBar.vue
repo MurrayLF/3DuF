@@ -45,7 +45,7 @@ export default {
                 Storage: ["LONG CELL TRAP", "SQUARE CELL TRAP", "REACTION CHAMBER", "DIAMOND REACTION CHAMBER"],
                 Process: ["LL CHAMBER", "FILTER","DOGBONE INSERT","LOGIC ARRAY"],
                 Distribute: ["PORT", "VIA", "YTREE", "TREE", "MUX", "TRANSPOSER", "MUX3D"],
-                Droplet: ["NOZZLE DROPLET GENERATOR", "DROPLET CAPACITANCE SENSOR", "DROPLET MERGER", "PICOINJECTOR", "DROPLET SPLITTER"]
+                Droplet: ["NOZZLE DROPLET GENERATOR", "DROPLET GENERATOR T", "DROPLET CAPACITANCE SENSOR", "DROPLET MERGER", "PICOINJECTOR", "DROPLET SPLITTER"]
             },
             connectionSpec: this.computedSpec("Connection"),
             channelSpec: this.computedSpec("Channel"),

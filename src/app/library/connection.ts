@@ -22,7 +22,7 @@ export default class Connection extends Template {
 
         this.__defaults = {
             connectionSpacing: 1600,
-            channelWidth: 0.8 * 1000,
+            channelWidth: 0.1 * 1000,
             height: 250
         };
 

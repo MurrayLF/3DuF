@@ -195,15 +195,16 @@ export default class Mux extends Template {
         const px = position[0];
         const py = position[1];
 
-        const treeWidth = (leafs - 1) * spacing + leafs * cw + valvewidth;
+        const w = spacing * (leafs / 2 + 1);
+        // const l = (levels + 1) * stagelength;
+
+        const treeWidth = 2 * w + valvewidth;
         const leftEdge = px - treeWidth / 2;
         const rightEdge = px + treeWidth / 2;
 
         const levels = Math.ceil(Math.log2(leafs));
 
         const isodd = !(leafs % 2);
-        const w = spacing * (leafs / 2 + 1);
-        const l = (levels + 1) * stagelength;
 
         // console.log("CW: " + cw +  " levels: "+ levels +  " width: " + w + " length: " + l)
 
@@ -253,7 +254,7 @@ export default class Mux extends Template {
         const lcentery = lstarty + Math.abs(lstarty - lendy) / 4;
         const valvewidth = params.width;
 
-        const treeWidth = (leafs - 1) * spacing + leafs * cw + valvewidth;
+        const treeWidth = 2 * w + valvewidth;
 
         const leftEdge = -treeWidth / 2;
         const rightEdge = treeWidth / 2;
